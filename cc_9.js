@@ -85,6 +85,18 @@ class Company {
     calculateTotalPayroll() {
         return this.employees.reduce((total, employee) => total + employee.calculateAnnualSalary(), 0);
     }
+
+    // TASK 5: IMPLEMENTING PROMOTIONS
+    
+    // Add method to promote employee to manager
+    promoteToManager(employee, teamSize) {
+        
+        // Identify employee in array
+        const employeePromoted = this.employees.indexOf(employee);
+        
+        // Instantiate employee as manager
+        this.employees[employeePromoted] = new Manager(employee.name, employee.id, employee.department, employee.salary, teamSize);
+    }
 }
 
 // Task 3 Test Case
@@ -96,4 +108,8 @@ company.listEmployees();
 
 // Task 4 Test Case
 console.log(company.calculateTotalPayroll()); 
+
+// Task 5 Test Case
+company.promoteToManager(emp1, 3);
+company.listEmployees();
 
