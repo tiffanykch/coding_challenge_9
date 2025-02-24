@@ -42,7 +42,13 @@ class Manager extends Employee {
 
     // Add method to calculate 10% of manager's annual salary 
     calculateBonus() {
-        return this.calculateAnnualSalary(this.salary) * 0.1;
+        return this.salary * 12 * 0.1;
+    }
+
+    // TASK 4
+    // Overriding calculateAnnualSalary() method to consider bonus
+    calculateAnnualSalary() {
+        return (this.salary * 12) + this.calculateBonus()
     }
 }
 
@@ -72,11 +78,22 @@ class Company {
             console.log(employee.getDetails());
         });
     }  
+
+    // TASK 4: IMPLEMENTING PAYROLL SYSTEM
+
+    // Add method to calculate all employee salaries
+    calculateTotalPayroll() {
+        return this.employees.reduce((total, employee) => total + employee.calculateAnnualSalary(), 0);
+    }
 }
 
-// Test Case
+// Task 3 Test Case
 const company = new Company("TechCorp");
 
 company.addEmployee(emp1);
 company.addEmployee(mgr1);
 company.listEmployees();
+
+// Task 4 Test Case
+console.log(company.calculateTotalPayroll()); 
+
