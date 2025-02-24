@@ -11,7 +11,7 @@ class Employee {
 
     // Add method to display employee information to the console
     getDetails () {
-        return `Employee Name: ${this.name}, ID: ${this.id}, Department: ${this.department}, Salary: ${this.salary}`;
+        return `Employee: ${this.name}, ID: ${this.id}, Department: ${this.department}, Salary: ${this.salary}`;
     }
 
     // Add method to calculate employee annual salary
@@ -37,7 +37,7 @@ class Manager extends Employee {
     
     // Override getDetails() method to include team size
     getDetails() {
-        return super.getDetails() + `, Team Size: ${this.teamSize}`;
+        return `Manager: ${this.name}, ID: ${this.id}, Department: ${this.department}, Salary: ${this.salary}, Team Size: ${this.teamSize}`;
     }
 
     // Add method to calculate 10% of manager's annual salary 
@@ -51,3 +51,33 @@ const mgr1 = new Manager("John Smith", 201, "IT", 8000, 5);
 
 console.log(mgr1.getDetails());
 console.log(mgr1.calculateBonus());
+
+// TASK 3: CREATING A COMPANY CLASS
+
+// Create company class to store and manage employee data
+class Company {
+    constructor(name) {
+        this.name = name;
+        this.employees = [];       
+    }
+
+    // Add method to add employee to array
+    addEmployee (employee) {
+        this.employees.push(employee)
+    }
+
+    // Add method to log all employee details
+    listEmployees() {
+        this.employees.forEach(employee => console.log(employee));
+    }
+
+}
+
+// Test Case
+const company = new Company("TechCorp");
+company.addEmployee(emp1);
+company.addEmployee(mgr1);
+company.listEmployees();
+// Expected output:
+// "Employee: Alice Johnson, ID: 101, Department: Sales, Salary: $5000"
+// "Manager: John Smith, ID: 201, Department: IT, Salary: $8000, Team Size: 5"
