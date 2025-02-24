@@ -1,1 +1,1 @@
-## Welcome to my JavaScript Classess Coding Challenge
+## Welcome to my JavaScript Classes Coding Challenge
